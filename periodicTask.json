@@ -1,0 +1,61 @@
+{
+	"pipelineObjects": [{
+		"fields": [{
+			"stringValue": "cron",
+			"key": "scheduleType"
+		}, {
+			"stringValue": "DataPipelineDefaultRole",
+			"key": "role"
+		}, {
+			"stringValue": "DataPipelineDefaultResourceRole",
+			"key": "resourceRole"
+		}],
+		"id": "Default",
+		"name": "Default"
+	}, {
+		"fields": [{
+			"stringValue": "${ALLOWED_EXECUTION_TIME}",
+			"key": "terminateAfter"
+		}, {
+			"key": "schedule",
+			"refValue": "${TASK_NAME}_schedule"
+		}, {
+			"stringValue": "${LOG_URI}",
+			"key": "logUri"
+		}, {
+			"stringValue": "Ec2Resource",
+			"key": "type"
+		}],
+		"id": "${TASK_NAME}_resource",
+		"name": "${TASK_NAME}_resource"
+	}, {
+		"fields": [{
+			"key": "schedule",
+			"refValue": "${TASK_NAME}_schedule"
+		}, {
+			"stringValue": "${SCRIPT_URI}",
+			"key": "scriptUri"
+		}, {
+			"key": "runsOn",
+			"refValue": "${TASK_NAME}_resource"
+		}, {
+			"stringValue": "ShellCommandActivity",
+			"key": "type"
+		}],
+		"id": "${TASK_NAME}_activity",
+		"name": "${TASK_NAME}_activity"
+	}, {
+		"fields": [{
+			"stringValue": "${START_DATE_TIME}",
+			"key": "startDateTime"
+		}, {
+			"stringValue": "${REPEAT_PERIOD}",
+			"key": "period"
+		}, {
+			"stringValue": "Schedule",
+			"key": "type"
+		}],
+		"id": "${TASK_NAME}_schedule",
+		"name": "${TASK_NAME}_schedule"
+	}]
+}
